@@ -2,6 +2,8 @@ package com.masai.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +24,7 @@ public class Transaction {
 	   private Integer transactionId;
 
 	   private String transactionType;
-
+@JsonFormat(pattern = "dd-MM-yyyy")
 	   private LocalDate transactionDate;
 
 	   private double amount;
