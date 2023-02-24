@@ -29,9 +29,9 @@ public class UserLoginServiceImpl implements UserLoginService {
 	@Override
 	public String login(UserLogin userLogin) throws LoginException {
 		
-        List<Customer> customer = customerRepo.findCustomerByMobile(userLogin.getMobileNumber());
+        Customer existingCustomer = customerRepo.findByMobileNumber(userLogin.getMobileNumber());
 		
-		Customer existingCustomer = customer.get(0);
+
 		
 		if(existingCustomer == null) {
 			throw new LoginException("Please Enter a Valid Mobile Number!");
