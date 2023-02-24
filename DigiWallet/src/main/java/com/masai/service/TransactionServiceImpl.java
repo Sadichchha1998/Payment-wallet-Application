@@ -35,33 +35,30 @@ throw new  TransactionException("Data is null");
 	
 	}
 
-	@Override
-	public List<Transaction> findByWallet(String key) throws TransactionException, WalletException, CustomerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+//-------------------------------Find Transaction - wallet------------------------------------------------//
+	
 	@Override
 	public Transaction findByTransactionId(String key, Integer transactionId)
 			throws TransactionException, CustomerException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+/*----------------------------------------   Find Transaction - Type  --------------------------------------------*/
 	@Override
 	public List<Transaction> findByTransactionType(String key, String transactionType)
 			throws TransactionException, CustomerException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+/*------------------------------------   View Transaction - Between 2 date ---------------------------------------*/
 	@Override
 	public List<Transaction> viewTransactionBetweenDate(String key, LocalDate startDate, LocalDate endDate)
 			throws TransactionException, CustomerException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+ /*-----------------------------------------   View All Transaction  ----------------------------------------------*/
 	@Override
 	public List<Transaction> viewAllTransaction() throws TransactionException {
 		List<Transaction> transactions= transactionRepository.findAll();
@@ -69,6 +66,13 @@ throw new  TransactionException("Data is null");
 			throw new TransactionException("There is no any Transtion to show ");
 		}
 		return transactions;
+	}
+
+
+	@Override
+	public List<Transaction> findByWallet(String key) throws TransactionException, WalletException, CustomerException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
