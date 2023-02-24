@@ -2,8 +2,10 @@ package com.masai.repository;
 
 import java.util.List;
 
-import com.masai.model.Customer;
+import org.springframework.stereotype.Repository;
 
+import com.masai.model.Customer;
+@Repository
 public class CustomerRepo {
 
 	public List<Customer> findCustomerByMobile(String mobileNumber) {
