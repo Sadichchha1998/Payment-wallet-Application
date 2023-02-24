@@ -21,6 +21,5 @@ public interface BeneficiaryService {
 
 	public List<Beneficiary> viewAllBeneficiary(String key) throws BeneficiaryException, CustomerException;
 	
-	public List<Beneficiary> findAllByWallet(Integer walletId) throws BeneficiaryException;
 	
 }
