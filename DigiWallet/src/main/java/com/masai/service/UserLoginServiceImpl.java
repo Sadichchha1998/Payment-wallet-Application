@@ -51,11 +51,11 @@ public class UserLoginServiceImpl implements UserLoginService {
 			
 			String key = RandomString.make(6);
 			
-			CustomerUserSession CurrRepo = new CustomerUserSession(existingCustomer.getCustomerId(),key,LocalDateTime.now());
+			CustomerUserSession customerUserSession = new CustomerUserSession(existingCustomer.getCustomerId(),key,LocalDateTime.now());
 			
-			currRepo.save(CurrRepo);
+			currRepo.save(customerUserSession);
 
-			return currRepo.toString();
+			return customerUserSession.getUuid();
 		}
 
 		throw new LoginException("Password is Invalid");
