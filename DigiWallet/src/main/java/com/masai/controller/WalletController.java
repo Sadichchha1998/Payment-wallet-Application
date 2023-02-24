@@ -24,17 +24,25 @@ public class WalletController {
         return new ResponseEntity<>(customer1, HttpStatus.CREATED);
     }
 
-    @GetMapping("/showbalance/{mobileNumber}")
-    public ResponseEntity<BigDecimal> showBalance(@PathVariable("mobileNumber") String num) throws CustomerException {
-        BigDecimal bigDecimal=walletService.showBalance(num);
+    @GetMapping("/showbalance/{mobileNumber}/{key}")
+    public ResponseEntity<BigDecimal> showBalance(@PathVariable("mobileNumber") String num,@PathVariable("key") String key) throws CustomerException {
+        BigDecimal bigDecimal=walletService.showBalance(num,key);
         return new ResponseEntity<>(bigDecimal, HttpStatus.OK);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Customer> updateAccount(@Valid @RequestBody Customer customer) throws CustomerException {
-        Customer customer1=walletService.updateAccount(customer);
+    public ResponseEntity<Customer> updateAccount(@Valid @RequestBody Customer customer,@PathVariable String key) throws CustomerException {
+        Customer customer1=walletService.updateAccount(customer,key);
         return new ResponseEntity<>(customer1, HttpStatus.OK);
     }
+    
+    @GetMapping("/customerdetails/{mobileNumber}/{key}")
+    public ResponseEntity<Customer> getCustomerDetails(@PathVariable("mobileNumber") String num,@PathVariable("key") String key) throws CustomerException {
+        Customer customer=walletService.customerDatails(num, key);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+    
+    
 
 
 }

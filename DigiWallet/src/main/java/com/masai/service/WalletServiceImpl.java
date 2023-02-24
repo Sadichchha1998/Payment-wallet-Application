@@ -2,7 +2,9 @@ package com.masai.service;
 
 import com.masai.exception.CustomerException;
 import com.masai.model.Customer;
+import com.masai.model.CustomerUserSession;
 import com.masai.model.Wallet;
+import com.masai.repository.CurrRepo;
 import com.masai.repository.CustomerDao;
 import com.masai.repository.WalletDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,11 @@ public class WalletServiceImpl implements  WalletService{
     private CustomerDao customerDao;
     @Autowired
     private WalletDao walletDao;
+    
+    @Autowired
+    private CurrRepo currRepo;
+    
+    
     @Override
     public Customer createAccount(Customer customer,BigDecimal bigDecimal) throws CustomerException {
 
@@ -33,8 +40,11 @@ public class WalletServiceImpl implements  WalletService{
     }
 
     @Override
-    public BigDecimal showBalance(String mobileNumber) {
-
+    public BigDecimal showBalance(String mobileNumber,String key) {
+    	
+    	CustomerUserSession customerUserSession= currRepo.findByUuid(key);
+    	if(customerUserSession==null) throw new CustomerException("Login first");
+    	
         Customer customer=customerDao.findByMobileNumber(mobileNumber);
 
         if(customer==null) throw new CustomerException("This mobile number does not exist");
@@ -44,8 +54,12 @@ public class WalletServiceImpl implements  WalletService{
     }
 
     @Override
-    public Customer updateAccount(Customer customer) throws CustomerException {
-
+    public Customer updateAccount(Customer customer,String key) throws CustomerException {
+    	
+    	CustomerUserSession customerUserSession= currRepo.findByUuid(key);
+    	if(customerUserSession==null) throw new CustomerException("Login First");
+    	
+    	
         Optional<Customer> opt=customerDao.findById(customer.getCustomerId());
 
         Customer existingCustomer=opt.get();
@@ -54,4 +68,16 @@ public class WalletServiceImpl implements  WalletService{
         return customerDao.save(customer);
 
     }
+
+	@Override
+	public Customer customerDatails(String mobileNumber, String key) throws CustomerException {
+		CustomerUserSession customerUserSession= currRepo.findByUuid(key);
+		if(customerUserSession==null) throw new CustomerException("Login First");
+		
+		Customer customer= customerDao.findByMobileNumber(mobileNumber);
+		if(customer==null) throw new CustomerException("Wrong mobile Number ");
+		
+		
+		return customer;
+	}
 }
