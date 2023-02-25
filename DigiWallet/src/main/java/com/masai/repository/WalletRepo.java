@@ -11,4 +11,6 @@ public interface WalletRepo extends JpaRepository<Wallet, Integer> {
 
     @Query("FROM Wallet w INNER JOIN w.customer c WHERE c.customerId=?1")
     public Wallet showCustomerWalletDetails(Integer customerId);
+
+	public Wallet findByCustomer(Integer userId);
 }
