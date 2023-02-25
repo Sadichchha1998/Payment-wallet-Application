@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface WalletDao extends JpaRepository<Wallet,Integer> {
 
 	 public Wallet findByCustomer(Customer customer);
+
+	public Wallet showCustomerWalletDetails(Integer userId);
 }
