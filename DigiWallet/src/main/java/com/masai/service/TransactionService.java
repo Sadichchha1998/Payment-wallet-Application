@@ -11,6 +11,8 @@ import com.masai.exception.WalletException;
 import com.masai.model.Transaction;
 @Service
 public interface TransactionService {
+	
+	
 	   public Transaction addTransaction(Transaction transaction) throws TransactionException,WalletException;
 
 	   public List<Transaction> findByWallet(String key) throws TransactionException, WalletException, CustomerException;
