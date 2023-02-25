@@ -24,7 +24,7 @@ public class Transaction {
 	   private Integer transactionId;
 
 	   private String transactionType;
-@JsonFormat(pattern = "dd-MM-yyyy")
+	   @JsonFormat(pattern = "dd-MM-yyyy")
 	   private LocalDate transactionDate;
 
 	   private double amount;
@@ -34,5 +34,18 @@ public class Transaction {
 
 	   @ManyToOne(cascade = CascadeType.ALL)
 	   private Wallet wallet;
+
+
+	public Transaction(String transactionType, LocalDate transactionDate, double amount, String description,
+			Wallet wallet) {
+		super();
+		this.transactionType = transactionType;
+		this.transactionDate = transactionDate;
+		this.amount = amount;
+		Description = description;
+		this.wallet = wallet;
+	}
+	   
+	   
 
 }

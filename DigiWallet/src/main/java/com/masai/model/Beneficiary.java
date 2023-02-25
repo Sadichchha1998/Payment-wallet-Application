@@ -29,4 +29,5 @@ public class Beneficiary {
 	   @ManyToOne(cascade = CascadeType.ALL)
 	   @JoinColumn(name = "walletId" ,referencedColumnName = "walletId")
 	   private Wallet wallet;
+	   
 }

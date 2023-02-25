@@ -42,6 +42,11 @@ public class WalletController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
     
+    @PostMapping("/fundtransfer/{sourceMobileNumber}/{targetMobileNumber}/{amount}/{key}")
+    public ResponseEntity<String> fundTransfer(@PathVariable("sourceMobileNumber") String sourceMobileNumber,@PathVariable("targetMobileNumber") String targetMobileNumber,@PathVariable("amount") BigDecimal amount,@PathVariable("key") String key) throws CustomerException {
+        String string=walletService.fundTransfer(sourceMobileNumber, targetMobileNumber, amount, key);
+        return new ResponseEntity<>(string, HttpStatus.OK);
+    }
     
 
 

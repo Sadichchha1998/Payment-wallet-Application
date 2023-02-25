@@ -15,18 +15,18 @@ import lombok.NoArgsConstructor;
 @Data
 public class BankAccount {
 	@Id
-	@NotNull
+//	@NotNull
 	private Integer accountNo;
 
-	@NotNull
+//	@NotNull
 	@Size(min = 5, max = 10,message = "Invalid IFSC Code [ 5-10 Characters only ]")
 	private String IFSCCode;
 	
-	@NotNull
+//	@NotNull
 	@Size(min = 3, max = 15,message = "Invalid Bank Name [ 3-15 characters only ]")
 	private String bankName;
 	
-	@NotNull
+//	@NotNull
 	private Double balance;
 	
 	

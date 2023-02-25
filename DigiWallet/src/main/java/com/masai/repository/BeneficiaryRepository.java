@@ -19,4 +19,6 @@ public interface BeneficiaryRepository extends JpaRepository<Beneficiary, String
 
 	 @Query(value = "FROM Beneficiary b INNER JOIN b.wallet w WHERE w.walletId=?1 AND b.beneficiaryMobileNumber =?2")
 	 public Beneficiary findByMobileWallet(Integer walletId,String beneficiaryMobileNumber);
+	 
+	 public Beneficiary findByBeneficiaryMobileNumber(String beneficiaryMobileNumber);
 }
