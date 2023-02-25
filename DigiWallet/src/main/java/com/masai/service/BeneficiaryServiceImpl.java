@@ -18,6 +18,7 @@ import com.masai.repository.BeneficiaryRepository;
 import com.masai.repository.CurrRepo;
 import com.masai.repository.CustomerDao;
 import com.masai.repository.CustomerRepo;
+import com.masai.repository.WalletDao;
 import com.masai.repository.WalletRepo;
 
 @Service
@@ -35,6 +36,9 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 	@Autowired
 	private WalletRepo walletRepo;
 	
+	@Autowired
+	private WalletDao walletDao;
+	
 	/*=============================================== Add Benificiary =================================================*/
 	
 	@Override
@@ -49,20 +53,31 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 		
 		Optional<Customer> cust = customerDao.findById(customerUserSession.getUserId());
 		
-		Optional<Wallet> wallet = walletRepo.findById(walletRepo.showCustomerWalletDetails(customerUserSession.getUserId()).getWalletId());
-		
-		
 		if(!cust.isPresent()) {
 			throw new CustomerException("Benificiary is not registered in this app!");
 		}
+		
+		Optional<Wallet> wallet = walletDao.findById(beneficiary.getWallet().getWalletId());
 		
 		if(!wallet.isPresent()) {
 			throw new WalletException("The user is Invalid!");
 		}
 		
+		Customer customer = wallet.get().getCustomer();
+		
+		Boolean con = beneficiary.getWallet().getWalletId()==beneficiary.getWallet().getCustomer().getCustomerId();
+		
+		if(!con) {
+			throw new CustomerException("Wallet Id is different from existing customer wallet Id!");
+		}
+		
+
+		
+		
+		
 		Optional<Beneficiary> benefi = beneficiaryRepo.findById(beneficiary.getBeneficiaryMobileNumber());
 		
-		if(benefi.isEmpty()) {
+		if(!benefi.isPresent()) {
 			return beneficiaryRepo.save(beneficiary);
 		}
 		
