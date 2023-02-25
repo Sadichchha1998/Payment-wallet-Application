@@ -26,7 +26,7 @@ public class Beneficiary {
 	   private String beneficiaryName;
 
 
-	   @ManyToOne(cascade = CascadeType.ALL)
+	   @ManyToOne(cascade = CascadeType.PERSIST)
 	   @JoinColumn(name = "walletId" ,referencedColumnName = "walletId")
 	   private Wallet wallet;
 	   

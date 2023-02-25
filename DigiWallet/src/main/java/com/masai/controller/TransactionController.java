@@ -62,8 +62,8 @@ public class TransactionController {
 	}
 	//------------------------------------   View Transaction - Between two dates ---------------------------------------//
 	
-	@GetMapping("/between")
-	public ResponseEntity<List<TransactionDTO>> viewByTwoDate(@RequestParam String key, @RequestParam("one") String one, @RequestParam("two")  String two) throws TransactionException, CustomerException{
+	@GetMapping("/between/{key}/{one}/{two}")
+	public ResponseEntity<List<TransactionDTO>> viewByTwoDate(@PathVariable("key") String key, @PathVariable("one") String one, @PathVariable("two")  String two) throws TransactionException, CustomerException{
 
 		LocalDate firstDate= LocalDate.parse(one);
 		LocalDate secondDate = LocalDate.parse(two);
@@ -82,8 +82,8 @@ public class TransactionController {
 	
 
 	//----------------------------------------  Get Transaction By Type  --------------------------------------------//
-	@GetMapping("/type")
-	public ResponseEntity<List<TransactionDTO>> viewAllTransacationByType(@RequestParam String key, @RequestParam String type) throws TransactionException, CustomerException{
+	@GetMapping("type/{key}")
+	public ResponseEntity<List<TransactionDTO>> viewAllTransacationByType(@PathVariable("key") String key, @RequestParam("type") String type) throws TransactionException, CustomerException{
 
 		List<Transaction> transactions = transactionService.findByTransactionType(key,type);
 

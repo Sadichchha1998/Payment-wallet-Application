@@ -74,14 +74,17 @@ throw new  TransactionException("Data is null");
        throw new CustomerException("No Customer LoggedIn");
     }
 
-    Wallet wallet = walletRepository.showCustomerWalletDetails(customerUserSession.getUserId());
-
-    Optional<Wallet> optional = walletRepository.findById(wallet.getWalletId());
-    if(!optional.isPresent()){
-       throw new WalletException("Invalid walletId");
-    }
-
-    List<Transaction> transactions = transactionRepository.findByWallet(wallet.getWalletId());
+//    Wallet wallet = walletRepository.showCustomerWalletDetails(customerUserSession.getUserId());
+//
+//    Optional<Wallet> optional = walletRepository.findById(wallet.getWalletId());
+//    if(!optional.isPresent()){
+//       throw new WalletException("Invalid walletId");
+//    }
+//
+//    List<Transaction> transactions = transactionRepository.findByWallet(wallet.getWalletId());
+    
+    List<Transaction> transactions=transactionRepository.findByTransactionType(transactionType);
+    
     if(transactions.isEmpty()){
        throw new TransactionException("No Transactions to Show");
     }

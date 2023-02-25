@@ -78,6 +78,8 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 		Optional<Beneficiary> benefi = beneficiaryRepo.findById(beneficiary.getBeneficiaryMobileNumber());
 		
 		if(!benefi.isPresent()) {
+			Optional<Wallet> optional  = walletDao.findById(beneficiary.getWallet().getWalletId());
+			beneficiary.getWallet().setBalance(optional.get().getBalance());
 			return beneficiaryRepo.save(beneficiary);
 		}
 		
@@ -97,9 +99,10 @@ public class BeneficiaryServiceImpl implements BeneficiaryService{
 			throw new CustomerException("Customer is not Logged in!");
 		}
 		
-		Wallet wallet = walletRepo.showCustomerWalletDetails(customerUserSession.getUserId());
+//		Wallet wallet = walletRepo.showCustomerWalletDetails(customerUserSession.getUserId());
 		
-		Beneficiary ben = beneficiaryRepo.findByMobileWallet(wallet.getWalletId(), beneficiaryDTO.getBeneficiaryMobileNumber());
+//		Beneficiary ben = beneficiaryRepo.findByMobileWallet(wallet.getWalletId(), beneficiaryDTO.getBeneficiaryMobileNumber());
+		Beneficiary ben= beneficiaryRepo.findByBeneficiaryMobileNumber(beneficiaryDTO.getBeneficiaryMobileNumber());
 		
 		if(ben==null) {
 			throw new BeneficiaryException("Benificiary is not found!");

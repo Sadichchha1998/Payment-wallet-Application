@@ -111,7 +111,12 @@ public class WalletServiceImpl implements  WalletService{
 		Wallet wallet= beneficiary.getWallet();
 		if(wallet==null) throw new WalletException("wallet not found ");
 		
-		Transaction transaction=new Transaction("Bank Transfer",LocalDate.now(),amount.doubleValue(),amount +" transferred to "+ targetMobileNumber,wallet);
+		Transaction transaction=new Transaction("Wallet Transfer",LocalDate.now(),amount.doubleValue(),amount +" transferred to "+ targetMobileNumber,wallet);
+		
+		if(wallet.getBalance().doubleValue()<amount.doubleValue()) {
+			throw new WalletException("Insufficient Balance ");
+		}
+		
 		
 		wallet.setBalance(wallet.getBalance().subtract(amount));
 		walletDao.save(wallet);
