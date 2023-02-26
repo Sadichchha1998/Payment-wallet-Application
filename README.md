@@ -2,7 +2,7 @@
 
 # Payment Wallet Application
 
-![Payment Wallet Application](https://drive.google.com/file/d/1WNGC70B_bvhZTk5Abo4rObXNKD3f1Jbh/view?usp=share_link)
+<img src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/DigiWallet.png" width='200' height="200">
 
 This is the Payment Wallet Application in Java using Spring Boot with Source Code.<br>
 
@@ -34,16 +34,19 @@ This is construct week group project of 5 collaborative team members built in 4 
 <img width="1414" alt="Screenshot 2023-01-22 at 12 21 08 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133314.png?raw=true">
 
 # User-Login-Controller
-<img width="1410" alt="Screenshot 2023-01-22 at 12 23 39 PM" src="">
+<img width="1410" alt="Screenshot 2023-01-22 at 12 23 39 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133352.png?raw=true">
 
 # Transaction-controller
-<img width="1420" alt="Screenshot 2023-01-22 at 12 24 50 PM" src="">
+<img width="1420" alt="Screenshot 2023-01-22 at 12 24 50 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133402.png?raw=true">
 
 # Bank-account-controller
-<img width="1422" alt="Screenshot 2023-01-22 at 12 25 30 PM" src="">
+<img width="1422" alt="Screenshot 2023-01-22 at 12 25 30 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133419.png?raw=true">
 
 # Beneficiary-controller
-<img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="">
+<img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133430.png?raw=true">
+
+# Schema
+<img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133455.png?raw=true">
 
 
 # Team Members
