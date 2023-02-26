@@ -1,14 +1,18 @@
 package com.masai.service;
 
+import com.masai.exception.BankAccountException;
 import com.masai.exception.BeneficiaryException;
 import com.masai.exception.CustomerException;
 import com.masai.exception.TransactionException;
 import com.masai.exception.WalletException;
+import com.masai.model.BankAccount;
 import com.masai.model.Beneficiary;
 import com.masai.model.Customer;
 import com.masai.model.CustomerUserSession;
 import com.masai.model.Transaction;
 import com.masai.model.Wallet;
+import com.masai.model.dto.BankAccountDTO;
+import com.masai.repository.BankAccountRepo;
 import com.masai.repository.BeneficiaryRepository;
 import com.masai.repository.CurrRepo;
 import com.masai.repository.CustomerDao;
@@ -35,6 +39,9 @@ public class WalletServiceImpl implements  WalletService{
     
     @Autowired
     private TransactionService transactionService;
+    
+    @Autowired
+    private BankAccountRepo bankAccountRepo;
     
     
     
@@ -125,4 +132,42 @@ public class WalletServiceImpl implements  WalletService{
 		
 		return "Fund Transfer successfully from cutomer account name "+customer.getCustomerName()+" to Beneficiary account holder "+beneficiary.getBeneficiaryName()+" through wallet";
 	}
+
+	@Override
+	public String depositAmount(Integer accountNo, BigDecimal amount, String key)
+			throws BankAccountException, WalletException, CustomerException, TransactionException {
+		
+		CustomerUserSession customerUserSession= currRepo.findByUuid(key);
+		if(customerUserSession==null) throw new CustomerException("Login First");
+		
+		Optional<Customer> opt= customerDao.findById(customerUserSession.getUserId());
+		
+		if(!opt.isPresent()) throw new CustomerException("Customer not found through key : "+key);
+		
+		BankAccount bankAccount=bankAccountRepo.findByAccountNo(accountNo);
+		if(bankAccount==null) throw new BankAccountException("Bank account does not found ");
+		
+		Wallet wallet= bankAccount.getWallet();
+		if(wallet==null) throw new WalletException("Wallet not found ");
+		
+		Double walletBanlance= wallet.getBalance().doubleValue();
+		Double banckAccountBalance= bankAccount.getBalance();
+		
+		if(walletBanlance<amount.doubleValue()) throw new BankAccountException("Insufficient Balance");
+		
+		wallet.setBalance(wallet.getBalance().subtract(amount));
+		
+		bankAccount.setBalance(banckAccountBalance+amount.doubleValue());
+		
+		Transaction transaction=new Transaction("Bank Transfer",LocalDate.now(),amount.doubleValue(),amount +" transferred to "+ opt.get().getMobileNumber(),wallet);
+		
+		walletDao.save(wallet);
+		bankAccountRepo.save(bankAccount);
+		
+		transactionService.addTransaction(transaction);
+		
+		
+		return amount+" deposit to account to "+bankAccount.getAccountNo()+" , deduct from customer "+opt.get().getCustomerName();
+	}
+
 }

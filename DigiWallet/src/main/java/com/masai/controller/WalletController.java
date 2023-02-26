@@ -48,6 +48,11 @@ public class WalletController {
         return new ResponseEntity<>(string, HttpStatus.OK);
     }
     
+    @PostMapping("/depositamount/{accountNo}/{amount}/{key}")
+    public ResponseEntity<String> depostAmount(@PathVariable("accountNo") Integer accountNo,@PathVariable("amount") BigDecimal amount,@PathVariable("key") String key) throws CustomerException {
+        String string=walletService.depositAmount(accountNo, amount, key);
+        return new ResponseEntity<>(string, HttpStatus.OK);
+    }
 
 
 }
