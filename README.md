@@ -45,6 +45,9 @@ This is construct week group project of 5 collaborative team members built in 4 
 # Beneficiary-controller
 <img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133430.png?raw=true">
 
+# ER-Diagram
+<img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot%20(6).png?raw=true">
+
 # Schema
 <img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133455.png?raw=true">
 
