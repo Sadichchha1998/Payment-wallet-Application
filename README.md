@@ -31,26 +31,26 @@ This is construct week group project of 5 collaborative team members built in 4 
 - Swagger-Ui
 
 # Wallet-controller
-<img width="1414" alt="Screenshot 2023-01-22 at 12 21 08 PM" src="https://user-images.githubusercontent.com/105917553/213904319-3ac3c05a-1b56-4ce4-87a2-4d1f35033b8a.png">
+<img width="1414" alt="Screenshot 2023-01-22 at 12 21 08 PM" src="https://drive.google.com/file/d/1Sn9U1rMfUEDKb1uliHE-kAM7Cytydfxk/view?usp=sharing">
 
 # User-Login-Controller
-<img width="1410" alt="Screenshot 2023-01-22 at 12 23 39 PM" src="https://user-images.githubusercontent.com/105917553/213904493-97acae20-efa1-4544-99f2-090cbe643ce9.png">
+<img width="1410" alt="Screenshot 2023-01-22 at 12 23 39 PM" src="">
 
 # Transaction-controller
-<img width="1420" alt="Screenshot 2023-01-22 at 12 24 50 PM" src="https://user-images.githubusercontent.com/105917553/213904404-ee1c95c0-fea0-4850-be07-00e0e98543bf.png">
+<img width="1420" alt="Screenshot 2023-01-22 at 12 24 50 PM" src="">
 
 # Bank-account-controller
-<img width="1422" alt="Screenshot 2023-01-22 at 12 25 30 PM" src="https://user-images.githubusercontent.com/105917553/213904415-58934eec-1c5b-4a3c-bc48-6a53519931cd.png">
+<img width="1422" alt="Screenshot 2023-01-22 at 12 25 30 PM" src="">
 
 # Beneficiary-controller
-<img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="https://user-images.githubusercontent.com/105917553/213904426-5a5f82e1-69d6-4705-82dd-536558ce35ad.png">
+<img width="1420" alt="Screenshot 2023-01-22 at 12 26 13 PM" src="">
 
 
 # Team Members
 
 - fw20_0485 - Sadichchha Savala Naiknavare 
-- fw20_0094  - Rishav Choudhary
-- fp03_249 - Arindam Nag
+- fw20_0094 - Rishav Choudhary
+- fp03_249  - Arindam Nag
 - fw19_1145 - Mayank Saxena
 - fw20_1231 - Pranali Mankar
 
