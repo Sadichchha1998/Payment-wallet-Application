@@ -31,7 +31,7 @@ This is construct week group project of 5 collaborative team members built in 4 
 - Swagger-Ui
 
 # Wallet-controller
-<img width="1414" alt="Screenshot 2023-01-22 at 12 21 08 PM" src="https://drive.google.com/file/d/1Sn9U1rMfUEDKb1uliHE-kAM7Cytydfxk/view?usp=sharing">
+<img width="1414" alt="Screenshot 2023-01-22 at 12 21 08 PM" src="https://github.com/mynk2906/Payment-Wallet-Application-Content/blob/main/Images/Screenshot_20230226_133314.png?raw=true">
 
 # User-Login-Controller
 <img width="1410" alt="Screenshot 2023-01-22 at 12 23 39 PM" src="">
