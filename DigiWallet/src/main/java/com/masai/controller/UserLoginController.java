@@ -28,7 +28,7 @@ public class UserLoginController {
 		return new ResponseEntity<String>(output,HttpStatus.OK);
 	}
 	
-	@PostMapping("/signout")
+	@PostMapping("/logout")
 	public ResponseEntity<String> logoutMapping(@RequestParam String key) throws LoginException{
 		
 		String output = loginService.logout(key);
