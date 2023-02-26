@@ -2,9 +2,15 @@
 
 # Payment Wallet Application
 
-![Property Real Estate logo](https://drive.google.com/file/d/1WNGC70B_bvhZTk5Abo4rObXNKD3f1Jbh/view?usp=share_link)
+![Payment Wallet Application](https://drive.google.com/file/d/1WNGC70B_bvhZTk5Abo4rObXNKD3f1Jbh/view?usp=share_link)
 
-This is the Payment Wallet Application in Java using Spring Boot with Source Code.
+This is the Payment Wallet Application in Java using Spring Boot with Source Code.<br>
+
+Funcionality of the application includes : User can able to add BankAcconuts to their wallet.
+User can able to transfer money from bank to wallet, wallet to wallet also can add money to wallet using mobile number.
+Apart from that user can see his all transactions by type , by tansactions Id, by transaction date.
+User can also add Beneficiary to their account.
+This is construct week group project of 5 collaborative team members built in 4 days.
 
 # Modules 
 
