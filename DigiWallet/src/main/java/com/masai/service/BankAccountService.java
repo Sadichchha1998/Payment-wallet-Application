@@ -16,9 +16,9 @@ public interface BankAccountService {
 	
 	public Wallet addAccount(String key,BankAccountDTO bankAccountDTO) throws BankAccountException,CustomerException;
 	
-	public Wallet removeAccount(String key,BankAccountDTO bankAccountDTO) throws BankAccountException, CustomerException;
+	public Wallet removeAccount(String key,Integer accountNo) throws BankAccountException, CustomerException;
 	
-	public Optional<BankAccount> viewAccount(String key, Integer accountNo) throws BankAccountException, CustomerException;
+	public BankAccount viewAccount(String key, Integer accountNo) throws BankAccountException, CustomerException;
 	
 	public List<BankAccount> viewAllAccounts(String key) throws BankAccountException, CustomerException;
 
