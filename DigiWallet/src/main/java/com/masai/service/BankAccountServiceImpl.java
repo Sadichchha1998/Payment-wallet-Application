@@ -58,21 +58,18 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 
 	@Override
-	public Wallet removeAccount(String key, BankAccountDTO bankAccountDTO)
+	public Wallet removeAccount(String key, Integer accountNo)
 			throws BankAccountException, CustomerException {
 		CustomerUserSession cr = currRepo.findByUuid(key);
         if(cr==null) {
     		throw new CustomerException("Customer is not logged in");
 		}
 		
-//		CrudRepository<BankAccount, Integer> bankAccountRepo = null;
-//		@SuppressWarnings("null")
-		Optional<BankAccount> optional = bankAccountRepo.findById(bankAccountDTO.getAccountNo());
+		Optional<BankAccount> optional = bankAccountRepo.findById(accountNo);
 		if(optional.isPresent()) {
-			
-			bankAccountRepo.delete(optional.get());
 			Wallet wallet = optional.get().getWallet();
-
+			bankAccountRepo.delete(optional.get());
+			
 			return wallet;
 
 		}
@@ -81,98 +78,34 @@ public class BankAccountServiceImpl implements BankAccountService {
 	
 	
 	@Override
-	public Optional<BankAccount> viewAccount(String key, Integer accountNo) throws BankAccountException, CustomerException {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public BankAccount viewAccount(String key, Integer accountNo) throws BankAccountException, CustomerException {
+		
+		CustomerUserSession cr = currRepo.findByUuid(key);
+        if(cr==null) {
+    		throw new CustomerException("Customer is not logged in");
+		}
+        
+        Optional<BankAccount> optional = bankAccountRepo.findById(accountNo);
+		if(optional.isPresent()) {
+			
+			return optional.get();
+		}
+		throw new BankAccountException("This account number does not exist");
+        
 	}
 	
 	
 	@Override
 	public List<BankAccount> viewAllAccounts(String key) throws BankAccountException, CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+		CustomerUserSession cr = currRepo.findByUuid(key);
+        if(cr==null) {
+    		throw new CustomerException("Customer is not logged in");
+		}
+        
+        List<BankAccount> accounts= bankAccountRepo.findAll();
+        if(accounts.isEmpty()) throw new BankAccountException("None account present in database");
+		return accounts;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-//  ------------------------------Method for Removing Bank Account --------------------------------
-//	@Override
-//	public Wallet removeAccount(String key, BankAccountDTO bankAccountDTO)
-//			throws BankAccountException, CustomerException {
-//		CustomerUserSession cr = currRepo.findByUuid(key);
-//        if(cr==null) {
-//    		throw new CustomerException("Customer is not logged in");
-//		}
-//		
-//		CrudRepository<BankAccount, Integer> bankAccountRepo = null;
-//		@SuppressWarnings("null")
-//		Optional<BankAccount> optional = bankAccountRepo.findById(bankAccountDTO.getAccountNo());
-//		if(optional.isPresent()) {
-//			
-//			bankAccountRepo.delete(optional.get());
-//			Wallet wallet = optional.get().getWallet();
-//
-//			return wallet;
-//
-//		}
-//		throw new BankAccountException("Bank Account does not exist");
-//	}
-//
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-////  ------------------------------Method for View User Bank Account --------------------------------
-//	@Override
-//	public Optional<BankAccount> viewAccount(String key, Integer accountNo)
-//			throws BankAccountException, CustomerException {
-//		// TODO Auto-generated method stub
-//		
-//		CustomerUserSession cr = currRepo.findByUuid(key);
-//        if(cr == null) {
-//    		throw new CustomerException("Customer is not logged in");
-//		}
-//		
-//		
-//		CrudRepository<BankAccount, Integer> bankAccountRepo = null;
-//		@SuppressWarnings("null")
-//		Optional<BankAccount> bankAccount = bankAccountRepo.findById(accountNo);
-//		if(bankAccount == null) {
-//			throw new BankAccountException("Bank Account does not exist");
-//		}
-//		return bankAccount;
-//	}
-//
-//	
-//	
-//	
-//	
-////  ------------------------------Method to View All Bank Account --------------------------------
-//	@Override
-//	public List<BankAccount> viewAllAccounts(String key) throws BankAccountException, CustomerException {
-//		CustomerUserSession cr = currRepo.findByUuid(key);
-//        if(cr == null) {
-//    		throw new CustomerException("Customer is not logged in");
-//		}
-//
-//		BankAccountRepo bankAccountRepo = null;
-//		@SuppressWarnings("null")
-//		BankAccount bankAccounts = bankAccountRepo.findAllByWallet(walletDao.showCustomerWalletDetails(cr.getUserId()).getWalletId());
-//		if(bankAccounts == null) {
-//			throw new BankAccountException("Bank Account does not exist");
-//		}
-//		return (List<BankAccount>) bankAccounts;
-//	}
 
 }
