@@ -129,8 +129,23 @@ throw new  TransactionException("Data is null");
 
 	@Override
 	public List<Transaction> findByWallet(String key) throws TransactionException, WalletException, CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+		CustomerUserSession customerUserSession = currRepo.findByUuid(key);
+		      if(customerUserSession==null) {
+		         throw new CustomerException("No Customer LoggedIn");
+		      }
+
+		      Wallet wallet = walletRepository.showCustomerWalletDetails(customerUserSession.getUserId());
+
+		      Optional<Wallet> optional = walletRepository.findById(wallet.getWalletId());
+		      if(!optional.isPresent()){
+		         throw new WalletException("Invalid walletId");
+		      }
+
+		      List<Transaction> transactions = transactionRepository.findByWallet(wallet.getWalletId());
+		      if(transactions.isEmpty()){
+		         throw new TransactionException("No Transactions to Show");
+		      }
+		      return transactions;
 	}
 
 
